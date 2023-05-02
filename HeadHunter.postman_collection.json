@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "fbda73f7-8f92-46c2-9287-2ae77adcb05e",
+		"name": "HeadHunter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25567006"
+	},
+	"item": [
+		{
+			"name": "Получение ID НН",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/areas",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"areas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Станции метро НН",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/metro/66",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"metro",
+						"66"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ID QA Studio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/employers?text=QA Studio",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"employers"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "QA Studio"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Подробности QA Studio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/employers/6017235",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"employers",
+						"6017235"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Языки HeadHunter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "PHPSESSID=r2t5uvjq435r4q7ib3vtdjq120",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.hh.ru/languages",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"languages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Скилл_Получение ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/suggests/skill_set?text=Тестирование пользовательского интерфейса",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"suggests",
+						"skill_set"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "Тестирование пользовательского интерфейса"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Скилл_Подробности",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.hh.ru/skills?id=2836",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"skills"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2836"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

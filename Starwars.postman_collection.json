@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "611ef8c9-38a9-40ed-96df-e99950d27cb1",
+		"name": "Starwars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25567006"
+	},
+	"item": [
+		{
+			"name": "People",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Возвращает человека\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"gender\");\r",
+							"});\r",
+							"pm.test(\"Присутствует хэддер Connection\", function () {\r",
+							"    pm.response.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Время ответа менее, чем 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Оби отметился на этом корабле\", function () {\r",
+							"    var jsonData3 = pm.response.json();\r",
+							"    pm.expect(jsonData3.starships[1]).to.eql(\"https://swapi.py4e.com/api/starships/59/\");\r",
+							"});\r",
+							"pm.test(\"Это Оби-Ван\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  pm.expect(responseJson.name).to.eql(\"Obi-Wan Kenobi\");\r",
+							"  pm.expect(responseJson.birth_year).to.eql(\"57BBY\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/people/10/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"people",
+						"10",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Planets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Верное название планеты\", function () {\r",
+							"    var jsonData2 = pm.response.json();\r",
+							"    pm.expect(jsonData2.name).to.eql(\"Endor\");\r",
+							"});\r",
+							"pm.test(\"В ответе есть гравитация 0,85 стандартная\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.gravity).to.eql(\"0.85 standard\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/planets/7/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"planets",
+						"7",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Starships",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Малочисленная команда\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.crew).to.eql(\"5\");\r",
+							"});\r",
+							"pm.test(\"Перевертыш\", function () {\r",
+							"    pm.expect(true).to.eql(false);\r",
+							"});\r",
+							"pm.test(\"Присутствует поле cost_in_credits\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"cost_in_credits\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/starships/5/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"starships",
+						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://swapi.py4e.com/",
+			"type": "string"
+		},
+		{
+			"key": "jsonData",
+			"value": "{\n    \"name\": \"Sentinel-class landing craft\",\n    \"model\": \"Sentinel-class landing craft\",\n    \"manufacturer\": \"Sienar Fleet Systems, Cyngus Spaceworks\",\n    \"cost_in_credits\": \"240000\",\n    \"length\": \"38\",\n    \"max_atmosphering_speed\": \"1000\",\n    \"crew\": \"5\",\n    \"passengers\": \"75\",\n    \"cargo_capacity\": \"180000\",\n    \"consumables\": \"1 month\",\n    \"hyperdrive_rating\": \"1.0\",\n    \"MGLT\": \"70\",\n    \"starship_class\": \"landing craft\",\n    \"pilots\": [],\n    \"films\": [\n        \"https://swapi.py4e.com/api/films/1/\"\n    ],\n    \"created\": \"2014-12-10T15:48:00.586000Z\",\n    \"edited\": \"2014-12-20T21:23:49.873000Z\",\n    \"url\": \"https://swapi.py4e.com/api/starships/5/\"\n}\n",
+			"type": "string"
+		},
+		{
+			"key": "jsonData2",
+			"value": "{\n    \"name\": \"Endor\",\n    \"rotation_period\": \"18\",\n    \"orbital_period\": \"402\",\n    \"diameter\": \"4900\",\n    \"climate\": \"temperate\",\n    \"gravity\": \"0.85 standard\",\n    \"terrain\": \"forests, mountains, lakes\",\n    \"surface_water\": \"8\",\n    \"population\": \"30000000\",\n    \"residents\": [\n        \"https://swapi.py4e.com/api/people/30/\"\n    ],\n    \"films\": [\n        \"https://swapi.py4e.com/api/films/3/\"\n    ],\n    \"created\": \"2014-12-10T11:50:29.349000Z\",\n    \"edited\": \"2014-12-20T20:58:18.429000Z\",\n    \"url\": \"https://swapi.py4e.com/api/planets/7/\"\n}",
+			"type": "string"
+		},
+		{
+			"key": "jsonData3",
+			"value": "{\n    \"name\": \"Obi-Wan Kenobi\",\n    \"height\": \"182\",\n    \"mass\": \"77\",\n    \"hair_color\": \"auburn, white\",\n    \"skin_color\": \"fair\",\n    \"eye_color\": \"blue-gray\",\n    \"birth_year\": \"57BBY\",\n    \"gender\": \"male\",\n    \"homeworld\": \"https://swapi.py4e.com/api/planets/20/\",\n    \"films\": [\n        \"https://swapi.py4e.com/api/films/1/\",\n        \"https://swapi.py4e.com/api/films/2/\",\n        \"https://swapi.py4e.com/api/films/3/\",\n        \"https://swapi.py4e.com/api/films/4/\",\n        \"https://swapi.py4e.com/api/films/5/\",\n        \"https://swapi.py4e.com/api/films/6/\"\n    ],\n    \"species\": [\n        \"https://swapi.py4e.com/api/species/1/\"\n    ],\n    \"vehicles\": [\n        \"https://swapi.py4e.com/api/vehicles/38/\"\n    ],\n    \"starships\": [\n        \"https://swapi.py4e.com/api/starships/48/\",\n        \"https://swapi.py4e.com/api/starships/59/\",\n        \"https://swapi.py4e.com/api/starships/64/\",\n        \"https://swapi.py4e.com/api/starships/65/\",\n        \"https://swapi.py4e.com/api/starships/74/\"\n    ],\n    \"created\": \"2014-12-10T16:16:29.192000Z\",\n    \"edited\": \"2014-12-20T21:17:50.325000Z\",\n    \"url\": \"https://swapi.py4e.com/api/people/10/\"\n}",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "b402af64-15b2-4f28-a7d1-ba2ca06fccb2",
+		"name": "Agent App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25567006"
+	},
+	"item": [
+		{
+			"name": "Авторизация",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"qa@qa.qa\",\r\n    \"password\": \"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/users/obtain-token",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"users",
+						"obtain-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Водитель",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Last Name\": \"Трамп\",\r\n    \"First Name\": \"Дональд\",\r\n    \"patronymic\": \"Фредович\",\r\n    \"birth_date\": \"1946-06-14\",\r\n    \"driving_experience_started\": \"1964-06-14\",\r\n    \"driver_licenses\": [\r\n        {\r\n            \"credential_type\": \"DRIVER_LICENSE\",\r\n            \"number\": \"666666\",\r\n            \"series\": \"1313\",\r\n            \"issue_date\": \"1964-06-14\"\r\n        }\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/drivers",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Собственник",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Last Name\": \"Депардье\",\r\n    \"First Name\": \"Жерар\",\r\n    \"patronymic\": \"Реневич\",\r\n    \"gender\": \"M\",\r\n    \"birth_date\": \"1948-12-27\",\r\n    \"credential\": [\r\n        {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2013-01-04\",\r\n      \"issue_point\": \"УФМС ПО Г.МОСКВЕ\",\r\n      \"issue_point_code\": \"770-001\",\r\n      \"number\": \"591391\",\r\n      \"series\": \"4511\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n         {\r\n      \"address_query\": \"г. Саранск, ул.Демократическая, д.1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"9000000000000\",\r\n      \"city_kladr_id\": \"9000000100000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г. Новосибирск, ул.Связистов, д.3\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"8000000000000\",\r\n      \"city_kladr_id\": \"8000000100000\"\r\n    }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/owners/natural_persons",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"owners",
+						"natural_persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Страхователь",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Last Name\": \"Депардье\",\r\n    \"First Name\": \"Жерар\",\r\n    \"patronymic\": \"Реневич\",\r\n    \"gender\": \"M\",\r\n    \"birth_date\": \"1948-12-27\",\r\n    \"credential\": [\r\n        {\r\n      \"credential_type\": \"RUSSIAN_INTERNAL_PASSPORT\",\r\n      \"issue_date\": \"2013-01-04\",\r\n      \"issue_point\": \"УФМС ПО Г.МОСКВЕ\",\r\n      \"issue_point_code\": \"770-001\",\r\n      \"number\": \"591391\",\r\n      \"series\": \"4511\"\r\n        }\r\n    ],\r\n    \"address\": [\r\n         {\r\n      \"address_query\": \"г. Саранск, ул.Демократическая, д.1\",\r\n      \"address_type\": \"LEGAL_ADDRESS\",\r\n      \"region_kladr_id\": \"9000000000000\",\r\n      \"city_kladr_id\": \"9000000100000\"\r\n    },\r\n    {\r\n      \"address_query\": \"г. Новосибирск, ул.Связистов, д.3\",\r\n      \"address_type\": \"ACTUAL_ADDRESS\",\r\n      \"region_kladr_id\": \"8000000000000\",\r\n      \"city_kladr_id\": \"8000000100000\"\r\n    }\r\n    ],\r\n    \"contact\": [\r\n        {\r\n            \"contact_type\": \"PHONE\",\r\n            \"data\": \"+73837862294\"\r\n        },\r\n        {\r\n            \"contact_type\": \"EMAIL\",\r\n            \"data\": \"ask_Gérard@inbox.ru\"\r\n        }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/insurants/natural_persons",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"insurants",
+						"natural_persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Автомобиль_500",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"car_model\": 322223000,\r\n    \"engine_power\": 150,\r\n    \"chassis_number\": 230880,\r\n    \"vin_number\": \"SJNFCAE11U1230880\",\r\n    \"number_plate\": \"М737ОР13\",\r\n    \"manufacturing_year\": 2023,\r\n    \"max_mass\": null,\r\n    \"credential\": [\r\n        {\r\n      \"credential_type\": \"VEHICLE_REGISTRATION\",\r\n      \"issue_date\": \"2023-01-01\",\r\n      \"number\": \"774098\",\r\n      \"series\": \"36RW\"\r\n    }\r\n    ]   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/cars",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Автомобиль",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"car_model_id\": 261020578,\r\n    \"engine_power\": 150,\r\n    \"chassis_number\": 230880,\r\n    \"vin_number\": \"SJNFCAE11U1230880\",\r\n    \"number_plate\": \"М737ОР13\",\r\n    \"manufacturing_year\": 2023,\r\n    \"max_mass\": null,\r\n    \"credential\": [\r\n        {\r\n      \"credential_type\": \"VEHICLE_REGISTRATION\",\r\n      \"issue_date\": \"2023-01-01\",\r\n      \"number\": \"774098\",\r\n      \"series\": \"36RW\"\r\n    }\r\n    ]   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/cars",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Объект страхования",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"drivers\": [\r\n        {{drivers}}\r\n        ],\r\n    \"owner\": {{owner}},\r\n    \"car\": {{car}},\r\n    \"insurant\": {{insurant}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api_version}}/insured_objects/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api_version}}",
+						"insured_objects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание договора",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valid_from\": \"2023-02-01\",\r\n    \"valid_to\": \"2024-02-01\",\r\n    \"insurance_period\": 8,\r\n    \"target_of_using\": 11,\r\n    \"drivers_ids\": [\r\n        {{drivers}}\r\n    ],\r\n    \"is_car_without_registration\": false,\r\n    \"engine_power\": 150,\r\n    \"has_car_trailer\": true,\r\n    \"car_type\": \"B\",\r\n    \"owner_registration\":\r\n        {{adress}},\r\n    \"periods\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v3/agreements/calculations",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v3",
+						"agreements",
+						"calculations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://partner.agentapp.ru",
+			"type": "string"
+		},
+		{
+			"key": "api_version",
+			"value": "v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "a3f1f7e29076fc6ecc4f3b49c7ee8e71c605a37c",
+			"type": "string"
+		},
+		{
+			"key": "ID",
+			"value": "\"839e8519-68f9-46a1-a91b-1198ff835e0c\"",
+			"type": "string"
+		},
+		{
+			"key": "drivers",
+			"value": "\"9dca61cc-d0ca-40cb-8722-5474310e86b5\"",
+			"type": "string"
+		},
+		{
+			"key": "owner",
+			"value": "\"b2cb0c8c-1741-4c2a-8f0c-359bd429c87d\"",
+			"type": "string"
+		},
+		{
+			"key": "car",
+			"value": "\"bf19202a-bbe3-4b9b-9eb3-7e89b11d1b75\"",
+			"type": "string"
+		},
+		{
+			"key": "insurant",
+			"value": "\"45c99fbe-3e72-4997-9d77-51c456043227\"",
+			"type": "string"
+		},
+		{
+			"key": "adress",
+			"value": "{\n      \"address_query\": \"г. Саранск, ул.Демократическая, д.1\",\n      \"address_type\": \"LEGAL_ADDRESS\",\n      \"region_kladr_id\": \"9000000000000\",\n      \"city_kladr_id\": \"9000000100000\"\n    }",
+			"type": "string"
+		}
+	]
+}
